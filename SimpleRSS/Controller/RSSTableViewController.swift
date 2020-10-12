@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RSSTableViewController: UITableViewController, RSSConnecterDelegate {
+class RSSTableViewController: UITableViewController, RSSConnectorDelegate {
     
     var rssChannel: RSSChannel?
 
@@ -149,9 +149,9 @@ class RSSTableViewController: UITableViewController, RSSConnecterDelegate {
         }
     }
     
-    // MARK: - RSSConnecterDelegate
+    // MARK: - RSSconnectorDelegate
     
-    func connecter(_ connecter: RSSConnecter, didFailedWithError error: Error?) {
+    func connector(_ connector: RSSConnector, didFailedWithError error: Error?) {
         DispatchQueue.main.async {
             if let refresh = self.refreshControl {
                 refresh.endRefreshing()
@@ -166,8 +166,8 @@ class RSSTableViewController: UITableViewController, RSSConnecterDelegate {
         }
     }
     
-    func connecterDidFinishDownloading(_ connecter: RSSConnecter) {
-        setRssChannel(connecter.rssChannel)
+    func connectorDidFinishDownloading(_ connector: RSSConnector) {
+        setRssChannel(connector.rssChannel)
     }
 
     
@@ -220,11 +220,11 @@ class RSSTableViewController: UITableViewController, RSSConnecterDelegate {
      RSSダウンロード開始
      */
     private func refreshData() {
-        let connecter = RSSConnecter()
-        if connecter.hasRssUrl() {
+        let connector = RSSConnector()
+        if connector.hasRssUrl() {
             // RSSフィード登録済
-            connecter.delegate = self
-            connecter.downloadRSSItems()
+            connector.delegate = self
+            connector.downloadRSSItems()
         }
         else {
             // RSSフィード未登録
@@ -262,8 +262,8 @@ class RSSTableViewController: UITableViewController, RSSConnecterDelegate {
         }))
         alert.addAction(UIAlertAction(title: "登録", style: .default, handler: { action -> Void in
             if let url = alert.textFields?.first?.text {
-                let connecter = RSSConnecter()
-                connecter.rssUrl = url
+                let connector = RSSConnector()
+                connector.rssUrl = url
                 
                 if url.isEmpty {
                     // リストをクリア
@@ -271,14 +271,14 @@ class RSSTableViewController: UITableViewController, RSSConnecterDelegate {
                 }
                 else {
                     // 登録されたRSSフィードを取得
-                    connecter.delegate = self
-                    connecter.downloadRSSItems()
+                    connector.delegate = self
+                    connector.downloadRSSItems()
                 }
             }
         }))
         alert.addTextField(configurationHandler: { textField -> Void in
-            let connecter = RSSConnecter()
-            textField.text = connecter.rssUrl
+            let connector = RSSConnector()
+            textField.text = connector.rssUrl
         })
         present(alert, animated: true, completion: nil)
     }

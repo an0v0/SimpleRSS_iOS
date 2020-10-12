@@ -1,5 +1,5 @@
 //
-//  RSSConnecter.swift
+//  RSSconnector.swift
 //  SimpleRSS
 //
 //  Copyright © 2018年 an. All rights reserved.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol RSSConnecterDelegate: class {
-    func connecter(_ connecter: RSSConnecter, didFailedWithError error: Error?)
-    func connecterDidFinishDownloading(_ connecter: RSSConnecter)
+protocol RSSConnectorDelegate: class {
+    func connector(_ connector: RSSConnector, didFailedWithError error: Error?)
+    func connectorDidFinishDownloading(_ connector: RSSConnector)
 }
 
 
-class RSSConnecter: NSObject, URLSessionTaskDelegate, XMLParserDelegate {
+class RSSConnector: NSObject, URLSessionTaskDelegate, XMLParserDelegate {
     
     // RSSフィードのURL保存key
     private let keyRssUrl = "RssUrl"
@@ -38,7 +38,7 @@ class RSSConnecter: NSObject, URLSessionTaskDelegate, XMLParserDelegate {
     }
 
     // デリゲート
-    weak var delegate: RSSConnecterDelegate?
+    weak var delegate: RSSConnectorDelegate?
     
     // RSSフィードのURL
     var rssUrl: String? {
@@ -93,7 +93,7 @@ class RSSConnecter: NSObject, URLSessionTaskDelegate, XMLParserDelegate {
         let task = session.dataTask(with: url) {
             (data: Data?, response: URLResponse?, error: Error?) in
             if let error = error, let delegate = self.delegate {
-                delegate.connecter(self, didFailedWithError: error)
+                delegate.connector(self, didFailedWithError: error)
             }
             else if let _ = response,
                 let data = data,
@@ -102,7 +102,7 @@ class RSSConnecter: NSObject, URLSessionTaskDelegate, XMLParserDelegate {
             }
             else {
                 if let delegate = self.delegate {
-                    delegate.connecter(self, didFailedWithError: nil)
+                    delegate.connector(self, didFailedWithError: nil)
                 }
             }
         }
@@ -115,10 +115,10 @@ class RSSConnecter: NSObject, URLSessionTaskDelegate, XMLParserDelegate {
     func parserDidEndDocument(_ parser: XMLParser) {
         if let delegate = delegate {
             if let channel = rssChannel, channel.items.count > 0 {
-                delegate.connecterDidFinishDownloading(self)
+                delegate.connectorDidFinishDownloading(self)
             }
             else {
-                delegate.connecter(self, didFailedWithError: nil)
+                delegate.connector(self, didFailedWithError: nil)
             }
         }
     }

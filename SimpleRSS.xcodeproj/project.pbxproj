@@ -16,7 +16,7 @@
 		A191EBD4210A14D300FC82F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A191EBD2210A14D300FC82F9 /* Main.storyboard */; };
 		A191EBD6210A14D300FC82F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A191EBD5210A14D300FC82F9 /* Assets.xcassets */; };
 		A191EBD9210A14D300FC82F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A191EBD7210A14D300FC82F9 /* LaunchScreen.storyboard */; };
-		A1A3318C213445150050982E /* RSSConnecter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A3318B213445150050982E /* RSSConnecter.swift */; };
+		A1A3318C213445150050982E /* RSSConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A3318B213445150050982E /* RSSConnector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 		A191EBD5210A14D300FC82F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A191EBD8210A14D300FC82F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A191EBDA210A14D300FC82F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1A3318B213445150050982E /* RSSConnecter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSConnecter.swift; sourceTree = "<group>"; };
+		A1A3318B213445150050982E /* RSSConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSConnector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				A17D1D822132F09900250490 /* RSSTableViewController.swift */,
-				A1A3318B213445150050982E /* RSSConnecter.swift */,
+				A1A3318B213445150050982E /* RSSConnector.swift */,
 				A10A35F921B3D04600CA06FF /* RSSDetailViewController.swift */,
 			);
 			path = Controller;
@@ -177,7 +177,7 @@
 			files = (
 				A18A1BBF213D76E400BEE549 /* RSSTableViewCell.swift in Sources */,
 				A16D3F06212DA9D500BCAB4F /* RSSChannel.swift in Sources */,
-				A1A3318C213445150050982E /* RSSConnecter.swift in Sources */,
+				A1A3318C213445150050982E /* RSSConnector.swift in Sources */,
 				A16D3F02212DA99800BCAB4F /* RSSItem.swift in Sources */,
 				A10A35FA21B3D04600CA06FF /* RSSDetailViewController.swift in Sources */,
 				A191EBCF210A14D300FC82F9 /* AppDelegate.swift in Sources */,
@@ -326,12 +326,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SimpleRSS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hatenablog.an.SimpleRSS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -344,12 +346,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SimpleRSS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hatenablog.an.SimpleRSS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
