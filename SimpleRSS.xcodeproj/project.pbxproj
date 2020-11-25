@@ -17,6 +17,7 @@
 		A191EBD6210A14D300FC82F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A191EBD5210A14D300FC82F9 /* Assets.xcassets */; };
 		A191EBD9210A14D300FC82F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A191EBD7210A14D300FC82F9 /* LaunchScreen.storyboard */; };
 		A1A3318C213445150050982E /* RSSConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A3318B213445150050982E /* RSSConnector.swift */; };
+		A1F45FED24741F3C00FE5AAD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F45FEC24741F3C00FE5AAD /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		A191EBD8210A14D300FC82F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A191EBDA210A14D300FC82F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1A3318B213445150050982E /* RSSConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSConnector.swift; sourceTree = "<group>"; };
+		A1F45FEC24741F3C00FE5AAD /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1F45FED24741F3C00FE5AAD /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +80,7 @@
 			children = (
 				A191EBCD210A14D300FC82F9 /* SimpleRSS */,
 				A191EBCC210A14D300FC82F9 /* Products */,
+				A1F45FEB24741F3C00FE5AAD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +105,14 @@
 				A191EBDA210A14D300FC82F9 /* Info.plist */,
 			);
 			path = SimpleRSS;
+			sourceTree = "<group>";
+		};
+		A1F45FEB24741F3C00FE5AAD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A1F45FEC24741F3C00FE5AAD /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +147,7 @@
 				TargetAttributes = {
 					A191EBCA210A14D300FC82F9 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1140;
 					};
 				};
 			};
@@ -326,17 +338,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SimpleRSS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hatenablog.an.SimpleRSS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -346,17 +358,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SimpleRSS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hatenablog.an.SimpleRSS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

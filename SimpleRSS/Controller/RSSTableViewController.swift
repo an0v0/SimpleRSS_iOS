@@ -7,12 +7,15 @@
 
 import UIKit
 
-class RSSTableViewController: UITableViewController, RSSConnectorDelegate {
+class RSSTableViewController: UITableViewController {
     
     var rssChannel: RSSChannel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // NavigationBarの外観設定
+        setupNavigationAppearance()
 
         // 引っ張って更新の設定
         let refresh = UIRefreshControl()
@@ -29,13 +32,13 @@ class RSSTableViewController: UITableViewController, RSSConnectorDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - IBAction
+    // MARK: IBAction
 
     @IBAction func onEditButton(_ sender: Any) {
         showInputDialog()
     }
     
-    // MARK: - Table view data source
+    // MARK: Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -55,18 +58,21 @@ class RSSTableViewController: UITableViewController, RSSConnectorDelegate {
             else {
                 rssCell.titleLabel.text = ""
             }
+            
             if let description = item.itemDescription {
                 rssCell.contentsLabel.text = trim(description)
             }
             else {
                 rssCell.contentsLabel.text = ""
             }
+            
             if let pubDate = item.pubDate {
                 rssCell.dateLabel.text = formatPubDate(trim(pubDate))
             }
             else {
                 rssCell.dateLabel.text = ""
             }
+            
             if let enclosureUrl = item.enclosureUrl {
                 DispatchQueue.global().async {
                     if let url = URL(string: enclosureUrl), let data = try? Data(contentsOf: url) {
@@ -76,6 +82,9 @@ class RSSTableViewController: UITableViewController, RSSConnectorDelegate {
                         }
                     }
                 }
+            }
+            else {
+                rssCell.thumbnailView?.image = nil
             }
         }
 
@@ -121,7 +130,7 @@ class RSSTableViewController: UITableViewController, RSSConnectorDelegate {
     }
     */
 
-    // MARK: - Navigation
+    // MARK: Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toRSSDetail" {
@@ -148,8 +157,11 @@ class RSSTableViewController: UITableViewController, RSSConnectorDelegate {
             return false
         }
     }
-    
-    // MARK: - RSSconnectorDelegate
+}
+
+// MARK: - RSSConnectorDelegate
+
+extension RSSTableViewController: RSSConnectorDelegate {
     
     func connector(_ connector: RSSConnector, didFailedWithError error: Error?) {
         DispatchQueue.main.async {
@@ -170,8 +182,11 @@ class RSSTableViewController: UITableViewController, RSSConnectorDelegate {
         setRssChannel(connector.rssChannel)
     }
 
-    
-    // MARK: - Private
+}
+
+// MARK: - Private
+
+extension RSSTableViewController {
     
     /**
      文字列から前後の余白を取り除く
@@ -281,5 +296,26 @@ class RSSTableViewController: UITableViewController, RSSConnectorDelegate {
             textField.text = connector.rssUrl
         })
         present(alert, animated: true, completion: nil)
+    }
+    
+    /**
+     NavigationBarの外観設定
+     */
+    private func setupNavigationAppearance() {
+        guard let barTintColor = UIColor(named: "Color_BarTint") else { return }
+
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithDefaultBackground()
+            appearance.backgroundColor = barTintColor
+            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            // Large Title時の設定
+            self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+            // 通常の設定
+            self.navigationController?.navigationBar.standardAppearance = appearance
+        } else {
+            navigationController?.navigationBar.barTintColor = barTintColor
+        }
     }
 }
